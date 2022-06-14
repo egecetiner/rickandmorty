@@ -1,13 +1,17 @@
-import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { TouchableOpacity, Text, StyleSheet } from "react-native";
 
-export const characterInfo = (characterUrl) => {
-    const navigation = useNavigation()
+export const characterInfo = (characterUrl: string, onPressFunction: () => void) => {
     let characterNumber = characterUrl.substr(42);
     return (
-        <TouchableOpacity key={characterNumber} style={styles.textView} onPress={() => navigation.navigate('CharacterScreen', { characterUrl })}>
-            <Text style={styles.text}>Character Number: {characterNumber}</Text>
+        <TouchableOpacity
+            key={characterNumber}
+            style={styles.textView}
+            onPress={onPressFunction}>
+            <Text
+                style={styles.text}>
+                Character Number: {characterNumber}
+            </Text>
         </TouchableOpacity>
     )
 }

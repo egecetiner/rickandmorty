@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { ActivityIndicator, Image, StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, View } from "react-native";
 import { fetchCharacter } from "../api/requests";
 import _ from "lodash";
+import Loading from "../components/loading";
+import { CharacterItemType } from "../types";
 
 const CharacterScreen = ({ route }) => {
     const { characterUrl } = route.params;
+    const [character, setCharacter] = useState<CharacterItemType>();
+
     useEffect(() => {
         fetchCharacter(characterUrl)
-        .then((fetchCharacter) => setCharacter(fetchCharacter.data))
-        .catch((error)=> console.log(error))
+            .then((fetchCharacter) => setCharacter(fetchCharacter.data))
+            .catch(console.error)
     }, []);
 
-    const [character, setCharacter] = useState();
     if (character && _.size(character) > 0) {
         return (
             <View style={styles.bg}>
@@ -27,9 +30,7 @@ const CharacterScreen = ({ route }) => {
         )
     } else {
         return (
-            <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-                <ActivityIndicator size="large" />
-            </View>
+            <Loading />
         )
     }
 }

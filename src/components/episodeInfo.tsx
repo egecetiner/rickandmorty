@@ -1,24 +1,13 @@
-import { useNavigation } from "@react-navigation/native";
 import React from "react"
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
+import { EpisodeItemType } from "../types";
 
-export type EpisodeItemType = {
-    air_date: string,
-    characters: [],
-    episode: string,
-    id: number,
-    name: string,
-    url: string
-}
-
-export const renderEpisode = (item: EpisodeItemType) => {
-    const navigation = useNavigation();
+export const renderEpisode = (item: EpisodeItemType, onPressFunction: () => void) => {
     return (
         <TouchableOpacity
             key={item.id}
-            onPress={() => navigation.navigate('EpisodeScreen', {
-                episodeUrl: item.url
-            })} style={styles.episode}>
+            onPress={onPressFunction}
+            style={styles.episode}>
             <Text style={styles.text}>{item.episode}</Text>
             <Text style={styles.text}>{item.name}</Text>
             <Text style={styles.text}>{item.air_date}</Text>
