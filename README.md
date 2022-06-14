@@ -6,7 +6,7 @@
 
 - Open terminal in the directory that project locates in
 - npm i && cd ios && pod install
-
+- npm run ios or npm run android 
 
 
 
