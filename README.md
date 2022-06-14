@@ -1,6 +1,6 @@
 # rickandmorty
 
- Open source API is used to develop this app: https://rickandmortyapi.com/api/ 
+ Open source API is used to develop the app: https://rickandmortyapi.com/api/ 
 
 ## Setup
 
